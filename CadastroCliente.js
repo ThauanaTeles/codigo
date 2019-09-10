@@ -63,11 +63,8 @@ const CadastroCliente = ({ title }) => (
       }, 1000);
     }}
 
-    handleSubmit={ ({resetForm}) => {
-      resetForm ();
-    }}
-        render={({ errors, status, touched, handleSubmit, values, actions, handleChange}) => (
-          <Form onSubmit={handleSubmit}>
+        render={({ errors, status, touched, handleSubmit, values, actions, handleChange, handleReset}) => (
+          <Form onSubmit={handleSubmit} onReset={handleReset}>
             <Card small className="mb-4">
               <CardHeader className="border-bottom">
                 <h6 className="m-0">{title}</h6>
@@ -158,8 +155,8 @@ const CadastroCliente = ({ title }) => (
                         <Row form>
                           {/* Descrição */}
                           <Col md="12" className="form-group">
-                            <label htmlFor="feDescription" value={values.descricao} onChange={handleChange}>Descrição</label>
-                            <FormTextarea id="feDescription" type="text" rows="5"/>
+                            <label htmlFor="feDescription">Descrição</label>
+                            <FormTextarea id="feDescription" type="text" rows="5" name="descricao" value={values.descricao} onChange={handleChange}/>
                           </Col>
                         </Row>
                         <Button type="submit" theme="accent" >Cadastrar</Button>
