@@ -56,15 +56,14 @@ const CadastroCliente = ({ title }) => (
         .max(100, '')
     })}
 
-    onSubmit={(values, actions) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
-      }, 1000);
-    }}
+    onSubmit={(values, { setSubmitting, setErrors, resetForm }) => {
+      console.log(JSON.stringify(values, null, 2))
+        setSubmitting(false);
+        resetForm({});
+      }}
 
-        render={({ errors, status, touched, handleSubmit, values, actions, handleChange, handleReset}) => (
-          <Form onSubmit={handleSubmit} onReset={handleReset}>
+        render={({ errors, status, touched, handleSubmit, values, actions, handleChange}) => (
+          <Form onSubmit={handleSubmit} >
             <Card small className="mb-4">
               <CardHeader className="border-bottom">
                 <h6 className="m-0">{title}</h6>
