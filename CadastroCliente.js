@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -13,11 +13,13 @@ import {
 } from "shards-react";
 import { Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import '../../shards-dashboard/styles/scss/client.scss';
+import '../boletos/GerarBoletos';
 
 
 const CadastroCliente = ({ title }) => (
   <Formik
-    initialValues={{
+    const initialValues={{
       nome: '',
       sobrenome: '',
       email: '',
@@ -55,13 +57,12 @@ const CadastroCliente = ({ title }) => (
         .min(6, '')
         .max(100, '')
     })}
-
-    onSubmit={(values, { setSubmitting, setErrors, resetForm }) => {
-      console.log(JSON.stringify(values, null, 2))
-        setSubmitting(false);
-        resetForm({});
-      }}
-
+    onSubmit={(values, actions) => {
+      setTimeout(() => {
+        console.log(JSON.stringify(values, null, 2))
+        actions.setSubmitting(false);
+      }, 1000);
+    }}
         render={({ errors, status, touched, handleSubmit, values, actions, handleChange}) => (
           <Form onSubmit={handleSubmit} >
             <Card small className="mb-4">
@@ -158,17 +159,18 @@ const CadastroCliente = ({ title }) => (
                             <FormTextarea id="feDescription" type="text" rows="5" name="descricao" value={values.descricao} onChange={handleChange}/>
                           </Col>
                         </Row>
-                        <Button type="submit" theme="accent" >Cadastrar</Button>
-
+                        <Button type="submit" theme="accent">Cadastrar</Button>
+                        <Button href="./Boletos" id="gerar-boleto" outline theme="success">Gerar Boleto</Button>
                     </Col>
                   </Row>
                 </ListGroupItem>
               </ListGroup>
             </Card>
           </Form>
-    )}
+        )}
   />
 );
+
 
 CadastroCliente.propTypes = {
   /**
