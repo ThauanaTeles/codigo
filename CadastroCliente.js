@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -17,7 +17,15 @@ import '../../shards-dashboard/styles/scss/client.scss';
 import '../boletos/GerarBoletos';
 
 
-const CadastroCliente = ({ title }) => (
+const CadastroCliente = ({ title }) => {
+
+  const [state, setState] = useState("");
+
+  useEffect( () => {
+
+  });
+
+  return (
   <Formik
     const initialValues={{
       nome: '',
@@ -63,7 +71,7 @@ const CadastroCliente = ({ title }) => (
         actions.setSubmitting(false);
       }, 1000);
     }}
-        render={({ errors, status, touched, handleSubmit, values, actions, handleChange}) => (
+        render={({ errors, status, touched, handleSubmit, values, handleChange}) => (
           <Form onSubmit={handleSubmit} >
             <Card small className="mb-4">
               <CardHeader className="border-bottom">
@@ -168,8 +176,9 @@ const CadastroCliente = ({ title }) => (
             </Card>
           </Form>
         )}
-  />
-);
+    />
+  );
+}
 
 
 CadastroCliente.propTypes = {
