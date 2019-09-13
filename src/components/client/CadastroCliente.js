@@ -168,7 +168,7 @@ const CadastroCliente = ({ title }) => {
                           </Col>
                         </Row>
                         <Button type="submit" theme="accent">Cadastrar</Button>
-                        <Button href="./Boletos" id="gerar-boleto" outline theme="success">Gerar Boleto</Button>
+                        <Button href="./Boletos" id="gerar-boleto" outline theme="success"><i className="fas fa-barcode"></i> Gerar Boleto</Button>
                     </Col>
                   </Row>
                 </ListGroupItem>

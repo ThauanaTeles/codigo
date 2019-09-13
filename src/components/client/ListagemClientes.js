@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
+import { Container, Row, Col, Card, CardHeader, CardBody, FormSelect } from "shards-react";
 
 import HeaderTitle from "./HeaderTitle";
 
@@ -9,9 +9,15 @@ class ListagemClientes extends React.Component {
     return (
       <Container fluid className="main-content-container px-4">
         {/* Page Header */}
-        <Row noGutters className="page-header py-4">
-          <HeaderTitle sm="4" title="Listagem" subtitle="CLIENTES" className="text-sm-left" />
-        </Row>
+
+        <Col md="4" className="form-group" id="listagem-filtro">
+          <FormSelect id="feInputState">
+          <option>Opção 1 </option>
+          <option>Opção 2</option>
+          <option>Opção 3</option>
+          <option>Opção 4</option>
+          </FormSelect>
+        </Col>
 
         {/* Default Light Table */}
         <Row>
