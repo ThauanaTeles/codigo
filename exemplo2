@@ -1,0 +1,75 @@
+const BuscarBoletos  = ({  isSubmitting}) => {
+
+  const handleOnSubmit = (values, actions) => {
+
+    const Id = "9029c83f2a704b128619f78cb6ec83ad";
+
+    const postValues = {...values};
+
+    postValues.VendedorId = Id;
+
+    postValues.Take = 20;
+    postValues.Page = 0;
+
+    setTimeout(() => {
+      //console.log(JSON.stringify(postValues, null, 2));
+      actions.setSubmitting(false);
+    }, 1000);
+    isSubmitting(postValues);
+  };
+
+  return (
+
+    <Formik
+
+    onSubmit={(values, actions) => handleOnSubmit(values, actions)}
+
+      initialValues={initialValues}
+      //validationSchema={validationSchema}
+    >{({ isSubmitting, values, setFieldValue }) => (
+      <Form>
+        <Card small className="mb-4">
+          <ListGroup flush>
+            <ListGroupItem className="p-3">
+              <Row>
+
+                <Col md="2" className="form-group">
+                  <label id="input"> Data de ínicio: </label>
+                  <DatePicker
+                    locale={pt}
+                    selected={values.InicioPeriodo}
+                    dateFormat="d MMMM, yyyy"
+                    className="form-control"
+                    name="InicioPeriodo"
+                    onChange={date => setFieldValue('InicioPeriodo', date)}
+                  />
+                </Col>
+                <Col md="2" className="form-group">
+                  <label id="input"> Data de ínicio: </label>
+                  <Field name="FimPeriodo">
+                    {({ field }) =>
+                      <DatePicker {...field}
+                        locale={pt}
+                        selected={values.FimPeriodo}
+                        dateFormat="d MMMM, yyyy"
+                        className="form-control"
+                        name="FimPeriodo"
+                        onChange={date => setFieldValue('FimPeriodo', date)}
+                      />
+                    }
+                  </Field>
+                </Col>
+                <Col md="2">
+                  <Button type="submit" theme="accent" id="gerar-boleto" disabled={isSubmitting}> <i className="fas fa-barcode" /> Procurar </Button>
+                </Col>
+              </Row>
+            </ListGroupItem>
+          </ListGroup>
+        </Card>
+      </Form>
+    )}</Formik>
+  );
+};
+
+
+export default BuscarBoletos ;
